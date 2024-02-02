@@ -1,0 +1,13 @@
+---
+
+- hosts: all
+  become: true
+  tasks:
+
+  - name: install apache2 package
+    yum:
+      name: httpd
+
+  - name: install vim package
+    yum:
+      name: vim

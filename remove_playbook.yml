@@ -1,0 +1,15 @@
+---
+
+- hosts: all
+  become: true
+  tasks:
+
+  - name: remove apache2 package
+    yum:
+      name: httpd
+      state: absent
+
+  - name: remove vim package
+    yum:
+      name: vim
+      state: absent
