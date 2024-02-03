@@ -4,10 +4,19 @@
   become: true
   tasks:
 
-  - name: install apache2 package
+  - name: install httpd and vim packages
     yum:
-      name: httpd
+      name:
+        - httpd
+        - vim
+      update_cache: yes
+    when: ansible_distribution == "CentOS"
 
-  - name: install vim package
-    yum:
-      name: vim
+  - name: install apache2 and vim packages
+    apt:
+      name:
+        - apache2
+        - vim
+      update_cache: yes
+    when: ansible_distribution in ["Debian","Ubuntu"]
+

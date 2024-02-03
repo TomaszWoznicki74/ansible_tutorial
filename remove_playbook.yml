@@ -4,12 +4,19 @@
   become: true
   tasks:
 
-  - name: remove apache2 package
+  - name: remove http and vim packages
     yum:
-      name: httpd
+      name:
+       - httpd
+       - vim
       state: absent
+    when: ansible_distribution == "CentOS"
 
-  - name: remove vim package
-    yum:
-      name: vim
-      state: absent
+  - name: remove apache2 and vim packages
+    apt:
+       name: 
+         - apache2
+         - vim
+       state: absent
+    when: ansible_distribution in ["Debian","Ubuntu"]
+
