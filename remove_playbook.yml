@@ -9,6 +9,10 @@
       name:
        - httpd
        - vim
+       - mariadb
+       - php
+       - samba
+       - ncdu
       state: absent
     when: ansible_distribution == "CentOS"
 
@@ -17,6 +21,10 @@
        name: 
          - apache2
          - vim
+         - mariadb-server
+         - samba
+         - php   
+         - ncdu
        state: absent
     when: ansible_distribution in ["Debian","Ubuntu"]
 
