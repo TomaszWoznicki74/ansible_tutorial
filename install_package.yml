@@ -9,6 +9,7 @@
       name:
         - httpd
         - vim
+        - ncdu
     when: ansible_distribution == "CentOS"
 
   - name: install apache2 and vim packages (Ubuntu)
@@ -17,5 +18,6 @@
         - apache2
         - vim
         - ncdu
+        - btop
     when: ansible_distribution in ["Debian","Ubuntu"]
 
