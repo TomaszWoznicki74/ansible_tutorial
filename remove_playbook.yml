@@ -1,6 +1,7 @@
 ---
 
-- hosts: all
+- name: Remove packages from servers
+  hosts: all
   become: true
   tasks:
 
@@ -9,6 +10,7 @@
       name:
        - httpd
        - vim
+       - btop
        - mariadb
        - php
        - samba
@@ -29,3 +31,12 @@
        state: absent
     when: ansible_distribution in ["Debian","Ubuntu"]
 
+  - name: remove dependecies from Centos
+    yum:
+      autoremove: true
+    when: ansible_distribution == "CentOS"
+ 
+  - name: remove dependecies from Ubuntu
+    apt:
+     autoremove: true
+    when: ansible_distribution in ["Debian","Ubuntu"]    
