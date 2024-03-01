@@ -1,0 +1,12 @@
+---
+- name: shutdown servers
+  hosts: all
+  become: true
+  tasks:
+    
+    - name: message to all servers
+      command: /sbin/wall "The server will be shutdown in 60 sec"
+
+    - name: command to shutdown servers (CentOS,Ubuntu)
+      command: /sbin/shutdown +1
+        
